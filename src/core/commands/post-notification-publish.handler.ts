@@ -11,8 +11,8 @@ export class PostNotificationPublishHandler {
         private readonly grammyService: GrammyService
     ) {}
 
-    public async execute() {
-        const response = await this.grammyService.sendMessage("Тимур привеееет!");
+    public async execute(command: PostNotificationPublishCommand) {
+        const response = await this.grammyService.sendMessage(command.body.text);
 
         return this.responseService.getHttpOkResponse({
             message: "Notification was successfully published",
